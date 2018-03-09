@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:trusty
 MAINTAINER wale soyinka <wsoyinka@gmail.com>
 
 # Prevent dpkg errors
@@ -8,9 +8,8 @@ ENV TERM=xterm-256color
 
 # Install node.js
 RUN apt-get update && \
-    apt-get install -y  sudo curl git apt-transport-https ca-certificates && \
-    curl --fail -ssL -o setup-nodejs https://deb.nodesource.com/setup_6.x && \
-    sudo bash setup-nodejs && \
+    apt-get install curl git -y && \
+    curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - && \
     apt-get update && \
     apt-get install -y nodejs 
 
